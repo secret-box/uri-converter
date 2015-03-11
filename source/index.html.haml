@@ -23,7 +23,7 @@
 
 :javascript
   // http://stackoverflow.com/questions/14995884/select-text-on-input-focus
-  angular.module('MyApp', []).
+  angular.module("MyApp", ["ui.bootstrap", "ngAnimate"]).
     directive('ncOnClickSelect', function() {
       return function (scope, element, attrs) {
         element.on('click', function () {
