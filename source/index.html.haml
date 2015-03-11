@@ -22,9 +22,9 @@
 
 
 :javascript
+
   // http://stackoverflow.com/questions/14995884/select-text-on-input-focus
-  angular.module("MyApp", ["ui.bootstrap", "ngAnimate"]).
-    directive('ncOnClickSelect', function() {
+  app.directive('ncOnClickSelect', function() {
       return function (scope, element, attrs) {
         element.on('click', function () {
           this.select();
@@ -32,7 +32,8 @@
     };
   });
 
-  var URLConverterCtrl = function ($scope) {
+  // var URLConverterCtrl = function ($scope) {
+  app.controller("URLConverterCtrl", function ($scope) {
     function uri_escape(uri) {
         return escape(uri);
     }
@@ -58,8 +59,8 @@
     }
     $scope.uri_decodeURIComponent = uri_decodeURIComponent;
 
-    $scope.source = "";
-  };
+    $scope.source = "http://example.com";
+  });
 
 #header
   #content.bs-docs-header
@@ -72,7 +73,6 @@
   %br
   %div{"ng-controller" => "URLConverterCtrl"}
     %div.input-group
-      %span.input-group-addon
       %input.form-control{ type: :text, "ng-model" => :source, placeholder: "Input convert URI.", "nc-on-click-select" => "" }
     %br
     %div.animate-height{ "ng-if" => "source != ''" }
