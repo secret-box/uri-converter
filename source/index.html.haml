@@ -72,8 +72,7 @@
 .container
   %br
   %div{"ng-controller" => "URLConverterCtrl"}
-    %div.input-group
-      %input.form-control{ type: :text, "ng-model" => :source, placeholder: "Input convert URI.", "nc-on-click-select" => "" }
+    %input.form-control{ type: :text, "ng-model" => :source, placeholder: "Input convert URI.", "nc-on-click-select" => "" }
     %br
     %div.animate-height{ "ng-if" => "source != ''" }
       escape :
