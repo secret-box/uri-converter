@@ -1,0 +1,92 @@
+:css
+  .animate-height.ng-enter,
+  .animate-height.ng-leave,
+  .animate-height.ng-move {
+    -webkit-transition: max-height 0.5s;
+    max-height: 0px;
+    overflow: hidden;
+  }
+
+  .animate-height.ng-enter {
+    max-height: 0px;
+  }
+  .animate-height.ng-enter.ng-enter-active {
+    max-height: 300px;
+  }
+  .animate-height.ng-leave {
+    max-height: 300px;
+  }
+  .animate-height.ng-leave.ng-leave-active {
+    max-height: 0px;
+  }
+
+
+:javascript
+  // http://stackoverflow.com/questions/14995884/select-text-on-input-focus
+  angular.module('MyApp', []).
+    directive('ncOnClickSelect', function() {
+      return function (scope, element, attrs) {
+        element.on('click', function () {
+          this.select();
+      });
+    };
+  });
+
+  var URLConverterCtrl = function ($scope) {
+    function uri_escape(uri) {
+        return escape(uri);
+    }
+    $scope.uri_escape = uri_escape;
+
+    function uri_encodeURIComponent(uri){
+      return encodeURIComponent(uri);
+    }
+    $scope.uri_encodeURIComponent = uri_encodeURIComponent;
+
+    function uri_encodeURI(uri){
+      return encodeURI(uri);
+    }
+    $scope.uri_encodeURI = uri_encodeURI;
+
+    function uri_decodeURI(uri){
+      return decodeURI(uri);
+    }
+    $scope.uri_decodeURI = uri_decodeURI;
+
+    function uri_decodeURIComponent(uri){
+      return decodeURIComponent(uri);
+    }
+    $scope.uri_decodeURIComponent = uri_decodeURIComponent;
+
+    $scope.source = "http://example.com";
+  };
+
+#header
+  #content.bs-docs-header
+    .container
+      %h1
+        .title
+          URI Converter (encode/decode)
+
+.container
+  %br
+  %div{"ng-controller" => "URLConverterCtrl"}
+    %div.input-group
+      %span.input-group-addon
+      %input.form-control{ type: :text, "ng-model" => :source, placeholder: "Input convert URI.", "nc-on-click-select" => "" }
+    %br
+    %div.animate-height{ "ng-if" => "source != ''" }
+      escape :
+      %pre {{ uri_escape(source) }}
+      %br
+      encodeURI :
+      %pre {{ uri_encodeURI(source) }}
+      encodeURIComponent :
+      %pre {{ uri_encodeURIComponent(source) }}
+      %br
+      decodeURI :
+      %pre {{ uri_decodeURI(source) }}
+      uri_decodeURIComponent :
+      %pre {{ uri_decodeURIComponent(source) }}
+
+

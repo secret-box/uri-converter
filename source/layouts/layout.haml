@@ -1,0 +1,21 @@
+%html{ "ng-app" => "MyApp" }
+  %head
+    %title
+      URI Converter
+    %script{:src => 'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js'}
+    %script{:src => 'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-animate.min.js'}
+    %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.0/ui-bootstrap-tpls.min.js", :type => "text/javascript"}
+
+    %link{:href => "http://netdna.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css", :rel => "stylesheet"}/
+
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %script{:language => "javascript"}
+      angular.module("MyApp", ["ui.bootstrap", "ngAnimate"]);
+      // http://moonglows76.tumblr.com/post/98848084043/angularjs-1-2-1-3
+      angular.module("ng").config(function($controllerProvider){ $controllerProvider.allowGlobals(); });
+  %body
+    = yield
+
+
