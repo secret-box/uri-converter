@@ -13,8 +13,6 @@
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     %script{:language => "javascript"}
       var app = angular.module("MyApp", ["ui.bootstrap", "ngAnimate"]);
-      // http://moonglows76.tumblr.com/post/98848084043/angularjs-1-2-1-3
-      angular.module("ng").config(function($controllerProvider){ $controllerProvider.allowGlobals(); });
   %body
     = yield
 
